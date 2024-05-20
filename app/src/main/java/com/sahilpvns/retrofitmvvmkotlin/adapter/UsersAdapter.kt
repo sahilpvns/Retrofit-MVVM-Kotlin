@@ -3,6 +3,7 @@ package com.sahilpvns.retrofitmvvmkotlin.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.sahilpvns.retrofitmvvmkotlin.databinding.ItemListBinding
 import com.sahilpvns.retrofitmvvmkotlin.model.UsersInfo
@@ -18,6 +19,9 @@ class UsersAdapter(private var postsList: ArrayList<UsersInfo>) : RecyclerView.A
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = postsList[position]
         holder.bind(post)
+        holder.binding.root.setOnClickListener {
+            Toast.makeText(it.context, "${post.id} Item Clicked", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int = postsList.size
