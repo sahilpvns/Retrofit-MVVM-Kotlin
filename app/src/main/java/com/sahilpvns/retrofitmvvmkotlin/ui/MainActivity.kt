@@ -1,6 +1,7 @@
 package com.sahilpvns.retrofitmvvmkotlin.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun viewModelObserve() {
         viewModel.vmPost.observe(this) {
             mAdapter.setData(it)
+            binding?.progressBar?.visibility = View.GONE
         }
     }
 
