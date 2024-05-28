@@ -20,7 +20,7 @@ class UsersAdapter(private var postsList: ArrayList<UsersInfo>) : RecyclerView.A
         val post = postsList[position]
         holder.bind(post)
         holder.binding.root.setOnClickListener {
-            Toast.makeText(it.context, "${post.id} Item Clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(it.context, "$position Item Clicked", Toast.LENGTH_SHORT).show()
         }
     }
 
