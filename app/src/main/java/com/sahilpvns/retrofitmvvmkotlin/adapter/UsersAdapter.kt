@@ -19,9 +19,6 @@ class UsersAdapter(private var postsList: ArrayList<UsersInfo>) : RecyclerView.A
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = postsList[position]
         holder.bind(post)
-        holder.binding.root.setOnClickListener {
-            Toast.makeText(it.context, "$position Item Clicked", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun getItemCount(): Int = postsList.size
@@ -36,6 +33,9 @@ class UsersAdapter(private var postsList: ArrayList<UsersInfo>) : RecyclerView.A
         fun bind(post: UsersInfo) {
             binding.data = post
             binding.tvId.text = String.format(post.id.toString() + ".")
+            binding.root.setOnClickListener {
+                Toast.makeText(it.context, "$adapterPosition Item Clicked", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
