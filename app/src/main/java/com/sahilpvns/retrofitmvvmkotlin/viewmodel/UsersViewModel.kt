@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 
 class UsersViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = UsersRepository()
-    val vmPost: MutableLiveData<ArrayList<UsersInfo>> = MutableLiveData()
+    val vmPost: MutableLiveData<List<UsersInfo>> = MutableLiveData()
 
     fun fetchPosts() {
         viewModelScope.launch {
             try {
                 vmPost.postValue(repository.getPosts())
             } catch (e: Exception) {
-
+                e.printStackTrace()
             }
         }
     }

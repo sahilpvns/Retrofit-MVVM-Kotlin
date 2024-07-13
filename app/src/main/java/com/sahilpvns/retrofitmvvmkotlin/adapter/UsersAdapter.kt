@@ -8,7 +8,7 @@ import com.sahilpvns.retrofitmvvmkotlin.databinding.ItemListBinding
 import com.sahilpvns.retrofitmvvmkotlin.model.UsersInfo
 
 
-class UsersAdapter(private var postsList: ArrayList<UsersInfo>) : RecyclerView.Adapter<UsersAdapter.PostViewHolder>() {
+class UsersAdapter(private var postsList: List<UsersInfo>) : RecyclerView.Adapter<UsersAdapter.PostViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
