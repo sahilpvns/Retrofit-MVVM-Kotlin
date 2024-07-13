@@ -1,6 +1,5 @@
 package com.sahilpvns.retrofitmvvmkotlin.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -23,13 +22,7 @@ class UsersAdapter(private var postsList: ArrayList<UsersInfo>) : RecyclerView.A
 
     override fun getItemCount(): Int = postsList.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(posts: ArrayList<UsersInfo>) {
-        postsList = posts
-        notifyDataSetChanged()
-    }
-
-    class PostViewHolder(var binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PostViewHolder(private var binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(post: UsersInfo) {
             binding.data = post
             binding.tvId.text = String.format(post.id.toString() + ".")

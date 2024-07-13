@@ -14,7 +14,6 @@ import com.sahilpvns.retrofitmvvmkotlin.viewmodel.UsersViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: UsersViewModel
-    private val mAdapter by lazy { UsersAdapter(ArrayList()) }
     private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,16 +29,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun viewModelObserve() {
         viewModel.vmPost.observe(this) {
-            mAdapter.setData(it)
+            binding?.rvList?.adapter = UsersAdapter(it)
             binding?.progressBar?.visibility = View.GONE
         }
     }
 
     private fun rvLayoutManager() {
-        binding?.apply {
-            rvList.layoutManager = LinearLayoutManager(this@MainActivity)
-            rvList.adapter = mAdapter
-        }
+           binding?.rvList?.layoutManager = LinearLayoutManager(this@MainActivity)
     }
 
     private fun viewModelProvider() {
