@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class UsersViewModel : ViewModel() {
     private val repository = UsersRepository()
-    val vmPost: MutableLiveData<List<UsersInfo>> = MutableLiveData()
+    val vmPost: MutableLiveData<List<UsersInfo?>> = MutableLiveData()
 
     fun fetchPosts() {
         viewModelScope.launch {
