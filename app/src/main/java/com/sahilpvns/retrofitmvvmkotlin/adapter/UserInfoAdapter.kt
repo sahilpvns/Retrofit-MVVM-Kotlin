@@ -27,7 +27,7 @@ class UserInfoAdapter(private var postData: List<UsersInfo?>) : RecyclerView.Ada
             binding.data = post
             binding.tvId.text = String.format(post?.id.toString() + ".")
             binding.root.setOnClickListener {
-                Toast.makeText(it.context, "$adapterPosition Item Clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(it.context, "Item Clicked: ${post?.id}", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -2,6 +2,7 @@ package com.sahilpvns.retrofitmvvmkotlin.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sahilpvns.retrofitmvvmkotlin.databinding.UserPhotoListBinding
@@ -25,6 +26,10 @@ class UserPhotoAdapter(private var photoData: List<UserPhoto?>): RecyclerView.Ad
         fun bind(photo: UserPhoto?) {
             binding.data = photo
             Glide.with(itemView.context).load(photo?.url).into(binding.ivUserPhoto)
+            binding.root.setOnClickListener {
+                Toast.makeText(it.context, "Item Clicked: ${photo?.id}", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 
