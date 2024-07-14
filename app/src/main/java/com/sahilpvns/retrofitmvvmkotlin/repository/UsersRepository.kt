@@ -5,7 +5,7 @@ import com.sahilpvns.retrofitmvvmkotlin.network.NetworkClient
 
 
 class UsersRepository {
-    private val postService = NetworkClient.api
+    private val postService = NetworkClient.apiService
 
     suspend fun getPosts(): List<UsersInfo?> {
         return postService.getPosts()
