@@ -13,31 +13,35 @@ import com.sahilpvns.retrofitmvvmkotlin.viewmodel.UsersViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: UsersViewModel
+    private var viewModel: UsersViewModel? = null
     private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        // Initialize ViewModel
         viewModelProvider()
         rvLayoutManager()
         viewModelObserve()
-        viewModel.fetchPosts()
+        viewModel?.fetchPosts()
 
     }
 
+    // Observe the ViewModel's LiveData
     private fun viewModelObserve() {
-        viewModel.vmPost.observe(this) {
+        viewModel?.vmPost?.observe(this) {
             binding?.rvList?.adapter = UsersAdapter(it)
             binding?.progressBar?.visibility = View.GONE
         }
     }
 
+    // Set up RecyclerView layout manager
     private fun rvLayoutManager() {
            binding?.rvList?.layoutManager = LinearLayoutManager(this@MainActivity)
     }
 
+    // Initialize ViewModel
     private fun viewModelProvider() {
         viewModel = ViewModelProvider(this)[UsersViewModel::class.java]
     }
