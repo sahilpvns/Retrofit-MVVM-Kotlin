@@ -3,6 +3,7 @@ package com.sahilpvns.retrofitmvvmkotlin.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sahilpvns.retrofitmvvmkotlin.model.UserPhoto
 import com.sahilpvns.retrofitmvvmkotlin.model.UsersInfo
 import com.sahilpvns.retrofitmvvmkotlin.repository.UsersRepository
 import kotlinx.coroutines.launch
@@ -10,8 +11,9 @@ import kotlinx.coroutines.launch
 
 class UsersViewModel : ViewModel() {
     private val repository = UsersRepository()
-    val vmPost: MutableLiveData<List<UsersInfo?>> = MutableLiveData()
 
+    // LiveData to hold the list of posts
+    val vmPost = MutableLiveData<List<UsersInfo?>>()
     fun fetchPosts() {
         viewModelScope.launch {
             try {
@@ -21,4 +23,19 @@ class UsersViewModel : ViewModel() {
             }
         }
     }
+
+    val vmPhoto: MutableLiveData<List<UserPhoto?>> = MutableLiveData()
+    fun fetchPhoto() {
+        viewModelScope.launch {
+            try {
+                vmPhoto.postValue(repository.getPhoto())
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+
+
+
 }

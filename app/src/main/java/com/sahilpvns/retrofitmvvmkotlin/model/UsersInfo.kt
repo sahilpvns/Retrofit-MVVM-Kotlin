@@ -7,3 +7,9 @@ data class UsersInfo(
     @SerializedName("title") val title: String? = null,
     @SerializedName("body") val body: String? = null,
 )
+
+data class UserPhoto(
+    @SerializedName("id") val id: Int? = null,
+    @SerializedName("title") val title: String? = null,
+    @SerializedName("url") val url: String? = null,
+)

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Retrofit MVVM Kotlin</string>
+    <string name="user_info">User Info</string>
+    <string name="user_photo">User Photo</string>
 </resources>
