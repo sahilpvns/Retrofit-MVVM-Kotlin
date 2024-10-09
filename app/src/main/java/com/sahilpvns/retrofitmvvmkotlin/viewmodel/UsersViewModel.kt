@@ -1,5 +1,6 @@
 package com.sahilpvns.retrofitmvvmkotlin.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,29 +13,46 @@ import kotlinx.coroutines.launch
 class UsersViewModel : ViewModel() {
     private val repository = UsersRepository()
 
-    // LiveData to hold the list of posts
-    val vmPost = MutableLiveData<List<UsersInfo?>>()
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> = _error
+
+    private val _vmPost = MutableLiveData<List<UsersInfo>>()
+    val vmPosts: LiveData<List<UsersInfo>> = _vmPost
+
     fun fetchPosts() {
         viewModelScope.launch {
             try {
-                vmPost.postValue(repository.getPosts())
+                if (repository.getPosts().isNotEmpty()) {
+                    _vmPost.value = repository.getPosts()
+                } else {
+                    _error.value = "No Data Found"
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+
         }
     }
 
-    val vmPhoto: MutableLiveData<List<UserPhoto?>> = MutableLiveData()
+
+
+    private val _vmPhoto = MutableLiveData<List<UserPhoto>>()
+    val vmPhoto: LiveData<List<UserPhoto>> = _vmPhoto
+
     fun fetchPhoto() {
         viewModelScope.launch {
             try {
-                vmPhoto.postValue(repository.getPhoto())
+                if (repository.getPhoto().isNotEmpty()) {
+                    _vmPhoto.value = repository.getPhoto()
+                } else {
+                    _error.value = "No Data Found"
+                }
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
-
 
 
 

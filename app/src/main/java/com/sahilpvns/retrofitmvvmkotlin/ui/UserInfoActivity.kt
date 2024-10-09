@@ -2,6 +2,7 @@ package com.sahilpvns.retrofitmvvmkotlin.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,12 +24,15 @@ class UserInfoActivity : AppCompatActivity() {
         rvLayoutManager()
         viewModelObserve()
         viewModel.fetchPosts()
+        viewModel.error.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
 
     }
 
     // Observe the ViewModel's LiveData
     private fun viewModelObserve() {
-        viewModel.vmPost.observe(this) {
+        viewModel.vmPosts.observe(this) {
             binding.rvList.adapter = UserInfoAdapter(it)
             binding.progressBar.visibility = View.GONE
         }

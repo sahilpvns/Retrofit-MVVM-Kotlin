@@ -2,6 +2,7 @@ package com.sahilpvns.retrofitmvvmkotlin.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,10 @@ class UserPhotoActivity : AppCompatActivity() {
         rvLayoutManager()
         viewModelObserve()
         viewModel.fetchPhoto()
+        viewModel.error.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
