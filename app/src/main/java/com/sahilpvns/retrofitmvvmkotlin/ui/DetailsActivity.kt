@@ -1,14 +1,9 @@
 package com.sahilpvns.retrofitmvvmkotlin.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
-import com.sahilpvns.retrofitmvvmkotlin.R
 import com.sahilpvns.retrofitmvvmkotlin.databinding.ActivityDetailsBinding
-import com.sahilpvns.retrofitmvvmkotlin.databinding.ActivityUserPhotoBinding
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding

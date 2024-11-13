@@ -13,18 +13,18 @@ import com.sahilpvns.retrofitmvvmkotlin.databinding.ActivityMainBinding
 import com.sahilpvns.retrofitmvvmkotlin.viewmodel.UsersViewModel
 
 class MainActivity : AppCompatActivity() {
-
-    private var binding: ActivityMainBinding? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        binding?.btnUserInfo?.setOnClickListener {
+        binding.btnUserInfo.setOnClickListener {
             startActivity(Intent(this, UserInfoActivity::class.java))
         }
 
-        binding?.btnUserPhoto?.setOnClickListener {
+        binding.btnUserPhoto.setOnClickListener {
             startActivity(Intent(this, UserPhotoActivity::class.java))
         }
 
