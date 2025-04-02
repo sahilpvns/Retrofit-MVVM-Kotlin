@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUpUI()
+    }
+
+    private fun setUpUI() {
         binding.btnUserInfo.setOnClickListener {
             startActivity(Intent(this, UserInfoActivity::class.java))
         }
@@ -27,6 +31,5 @@ class MainActivity : AppCompatActivity() {
         binding.btnUserPhoto.setOnClickListener {
             startActivity(Intent(this, UserPhotoActivity::class.java))
         }
-
     }
 }

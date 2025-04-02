@@ -24,6 +24,10 @@ class UserInfoAdapter(private var postData: List<UsersInfo?>) : RecyclerView.Ada
 
     class PostViewHolder(private var binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(post: UsersInfo?) {
+            setDataBinding(post)
+        }
+
+        private fun setDataBinding(post: UsersInfo?) {
             binding.data = post
             binding.tvId.text = String.format(post?.id.toString() + ".")
             binding.root.setOnClickListener {

@@ -16,11 +16,11 @@ class DetailsActivity : AppCompatActivity() {
         val title = intent.getStringExtra("title")
         val id = intent.getIntExtra("id", 0)
 
+        setUpUI(url, title, id)
+    }
+
+    private fun setUpUI(url: String?, title: String?, id: Int) {
         binding.tvTitle.text = title
         Glide.with(this).load(url).into(binding.ivImage)
-
-
-
-
     }
 }

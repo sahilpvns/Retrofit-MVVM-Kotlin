@@ -2,6 +2,7 @@ package com.sahilpvns.retrofitmvvmkotlin.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -28,14 +29,18 @@ class UserPhotoAdapter(private var photoData: List<UserPhoto?>): RecyclerView.Ad
             binding.data = photo
             Glide.with(itemView.context).load(photo?.url).into(binding.ivUserPhoto)
             binding.root.setOnClickListener {
-                val intent = Intent(it.context, DetailsActivity::class.java).apply {
-                    putExtra("url", photo?.url)
-                    putExtra("title", photo?.title)
-                    putExtra("id", photo?.id)
-                }
-                it.context.startActivity(intent)
+                openDetailsActivity(it, photo)
             }
 
+        }
+
+        private fun openDetailsActivity(it: View, photo: UserPhoto?) {
+            val intent = Intent(it.context, DetailsActivity::class.java).apply {
+                putExtra("url", photo?.url)
+                putExtra("title", photo?.title)
+                putExtra("id", photo?.id)
+            }
+            it.context.startActivity(intent)
         }
     }
 
